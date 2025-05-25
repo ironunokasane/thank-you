@@ -3,29 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <title>ありがとうございました</title>
-    <style>
+  <style>
     body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    text-align: center;
-    background: #FFD8CC;
-    padding: 5em;
-    color: #333;
-  }
+      font-family: 'Georgia', 'Times New Roman', serif;
+      text-align: center;
+      background: linear-gradient(45deg, #FFD8CC, #FFE4E1, #FFF0F5);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 3em;
+      color: #333;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-  h1 {
-    font-size: 2em;
-    color: #4C4C4C;
-  }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  p {
-    font-size: 1.2em;
-  }
-</style>
+    .container {
+      position: relative;
+      z-index: 2;
+    }
 
+    h1 {
+      font-size: 2.5em;
+      color: #4C4C4C;
+      opacity: 0;
+      animation: fadeInDown 1.5s ease 0.5s forwards;
+      margin-bottom: 1em;
+    }
+
+    .message {
+      font-size: 1.3em;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease 1s forwards;
+      margin-bottom: 2em;
+    }
+
+    .farewell {
+      font-size: 1.2em;
+      color: #666;
+      opacity: 0;
+      animation: fadeIn 1.5s ease 2s forwards;
+      margin-bottom: 3em;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .petal {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #FFB6C1;
+      border-radius: 50% 0;
+      opacity: 0.7;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .petal:nth-child(odd) {
+      background: #FFC0CB;
+      animation-delay: -2s;
+    }
+
+    .petal:nth-child(3n) {
+      background: #FFCCCB;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10%, 90% {
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-10px) rotate(180deg);
+        opacity: 0.9;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body { padding: 2em 1em; }
+      h1 { font-size: 2em; }
+      .message { font-size: 1.1em; }
+    }
+  </style>
 </head>
 <body>
-  <h1>ご覧いただきありがとうございます</h1>
-  <p>ironunokasane.com は<br>長年のご愛顧に感謝を込めて<br>静かにお休みに入りました。</p>
-  <p>またどこかでお会いできたら嬉しいです。</p>
+  <!-- 浮遊する花びら -->
+  <div class="petal" style="left: 10%; animation-duration: 7s;"></div>
+  <div class="petal" style="left: 20%; animation-duration: 6s; animation-delay: -1s;"></div>
+  <div class="petal" style="left: 30%; animation-duration: 8s; animation-delay: -3s;"></div>
+  <div class="petal" style="left: 40%; animation-duration: 5s; animation-delay: -2s;"></div>
+  <div class="petal" style="left: 50%; animation-duration: 7s; animation-delay: -4s;"></div>
+  <div class="petal" style="left: 60%; animation-duration: 6s; animation-delay: -1.5s;"></div>
+  <div class="petal" style="left: 70%; animation-duration: 8s; animation-delay: -2.5s;"></div>
+  <div class="petal" style="left: 80%; animation-duration: 5s; animation-delay: -3.5s;"></div>
+  <div class="petal" style="left: 90%; animation-duration: 7s; animation-delay: -0.5s;"></div>
+
+  <div class="container">
+    <h1>ご覧いただきありがとうございます</h1>
+    <div class="message">
+      ironunokasane.com は<br>
+      長年のご愛顧に感謝を込めて<br>
+      静かにお休みに入りました。
+    </div>
+    <div class="farewell">
+      またどこかでお会いできたら嬉しいです。
+    </div>
+  </div>
 </body>
 </html>
